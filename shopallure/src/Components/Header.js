@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 import logo from "../Images/ShopAllure.png";
@@ -7,11 +7,23 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { RxCross2 } from "react-icons/rx";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "../api";
+import { setProducts } from "../Redux/ProductsSlice";
 
 const Header = () => {
   const [openModal, setOpenModal] = useState(false);
   const { eCommerceLoggedIn } = useSelector((store) => store.auth);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    async function getData() {
+      const data = await getProducts();
+      dispatch(setProducts(data.products));
+    }
+    getData();
+  }, []);
 
   function handleClick() {
     localStorage.removeItem("encodedToken");

@@ -6,10 +6,10 @@ import {
 } from "react-router-dom";
 
 import Layout from "./Components/Layout";
-import Clothes from "./Pages/Clothes";
-import Men from "./Pages/Men";
-import Women from "./Pages/Women";
-import Kids from "./Pages/Kids";
+import Clothes from "./Pages/Categories/Clothes";
+import Men from "./Pages/Categories/Men";
+import Women from "./Pages/Categories/Women";
+import Kids from "./Pages/Categories/Kids";
 import Home from "./Pages/Home/Home";
 import ProtectedRoute from "./ProtectedRoute";
 import Wishlist from "./Pages/Wishlist";

@@ -1,9 +1,7 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
-import cartSlice from "./cartSlice";
 import productsSlice from "./ProductsSlice";
-
-console.log("inside store");
+import cartSlice from "./CartsSlice";
 
 const encodedToken =
   localStorage.getItem("encodedToken") ??

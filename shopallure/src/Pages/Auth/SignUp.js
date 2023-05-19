@@ -11,17 +11,16 @@ export async function action({ request }) {
   const email = formData.get("email");
   const password = formData.get("password");
   const isChecked = formData.get("checkbox");
-  const resp = await authenticateUser(
-    {
-      email,
-      password,
-      firstName,
-      lastName,
-    },
-    "signup"
-  );
-  if (resp.ok) {
-    const { encodedToken, createdUser } = await resp.json();
+  try {
+    const { encodedToken, foundUser } = await authenticateUser(
+      {
+        email,
+        password,
+        firstName,
+        lastName,
+      },
+      "signup"
+    );
     if (isChecked) {
       localStorage.setItem("encodedToken", encodedToken);
       localStorage.setItem("eCommerceLoggedIn", true);
@@ -31,10 +30,8 @@ export async function action({ request }) {
     }
     window.location.reload();
     return null;
-  } else {
-    const { errors } = await resp.json();
-    console.log(await resp.json());
-    return errors;
+  } catch (err) {
+    return err;
   }
 }
 
@@ -47,7 +44,7 @@ const SignUp = () => {
   return (
     <div className="w-full h-[70vh] border flex flex-col gap-6 justify-center items-center p-8">
       <h1 className="text-2xl md:4xl font-bold">Sign up here</h1>
-      {error && <p className="text-red-500  md:text-xl">{error}</p>}
+      {error && <p className="text-red-500  md:text-xl">{error.message}</p>}
       <Form
         className="flex flex-col gap-3 w-[75%] md:w-[50%]"
         method="post"
@@ -85,7 +82,7 @@ const SignUp = () => {
         </div>
 
         <button className="border bg-black text-white p-2 text-lg">
-          Log In
+          Sign Up
         </button>
       </Form>
     </div>

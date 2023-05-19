@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "./Header";
 import { Outlet } from "react-router-dom";
 import Footer from "./Footer";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import Store from "../Redux/Store";
 
 const Layout = () => {
