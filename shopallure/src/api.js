@@ -32,7 +32,6 @@ export async function getCartData(path) {
     },
   });
   const data = await resp.json();
-
   if (!resp.ok) {
     // eslint-disable-next-line no-throw-literal
     throw {
@@ -44,6 +43,8 @@ export async function getCartData(path) {
 
   return data;
 }
+
+// WishList function
 
 // Products
 

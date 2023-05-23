@@ -2,6 +2,7 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 import productsSlice from "./ProductsSlice";
 import cartSlice from "./CartsSlice";
+import wishlistSlice from "./WishlistSlice";
 
 const encodedToken =
   localStorage.getItem("encodedToken") ??
@@ -20,6 +21,7 @@ const Store = configureStore({
     cart: cartSlice.reducer,
     auth: authSlice.reducer,
     products: productsSlice.reducer,
+    wishlist: wishlistSlice.reducer,
   },
 });
 

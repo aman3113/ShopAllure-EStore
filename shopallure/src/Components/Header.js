@@ -8,8 +8,8 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { RxCross2 } from "react-icons/rx";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "../api";
 import { setProducts } from "../Redux/ProductsSlice";
+import { getProducts } from "../api";
 
 const Header = () => {
   const [openModal, setOpenModal] = useState(false);

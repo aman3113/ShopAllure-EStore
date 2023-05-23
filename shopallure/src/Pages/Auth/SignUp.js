@@ -11,6 +11,7 @@ export async function action({ request }) {
   const email = formData.get("email");
   const password = formData.get("password");
   const isChecked = formData.get("checkbox");
+  console.log(isChecked);
   try {
     const { encodedToken, foundUser } = await authenticateUser(
       {
@@ -77,7 +78,12 @@ const SignUp = () => {
           placeholder="Password"
         />
         <div className="flex gap-3 items-center">
-          <input type="checkbox" id="remember" className="w-4 h-4" />
+          <input
+            type="checkbox"
+            id="remember"
+            name="checkbox"
+            className="w-4 h-4"
+          />
           <label htmlFor="remember">Remember me</label>
         </div>
 

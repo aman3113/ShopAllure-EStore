@@ -2,13 +2,19 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const productsSlice = createSlice({
   name: "products",
-  initialState: { value: [] },
+  initialState: {
+    array: [],
+    filteredArray: [],
+  },
   reducers: {
     setProducts: (state, action) => {
-      state.value = action.payload;
+      state.array = action.payload;
+    },
+    setFilteredArray: (state, action) => {
+      state.filteredArray = action.payload;
     },
   },
 });
 
-export const { setProducts } = productsSlice.actions;
+export const { setProducts, setFilteredArray } = productsSlice.actions;
 export default productsSlice;
