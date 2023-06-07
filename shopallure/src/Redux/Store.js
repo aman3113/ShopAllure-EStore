@@ -17,6 +17,18 @@ const authSlice = createSlice({
   initialState: { encodedToken, eCommerceLoggedIn },
 });
 
+const spinnerSlice = createSlice({
+  name: "spinner",
+  initialState: {
+    value: false,
+  },
+  reducers: {
+    toggleSpinner: (state) => {
+      state.value = !state.value;
+    },
+  },
+});
+
 const Store = configureStore({
   reducer: {
     cart: cartSlice.reducer,
@@ -24,7 +36,9 @@ const Store = configureStore({
     products: productsSlice.reducer,
     wishlist: wishlistSlice.reducer,
     user: userSlice.reducer,
+    spinner: spinnerSlice.reducer,
   },
 });
 
+export const { toggleSpinner } = spinnerSlice.actions;
 export default Store;

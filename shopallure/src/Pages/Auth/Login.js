@@ -44,18 +44,18 @@ const Login = () => {
       <h1 className="text-2xl md:4xl font-bold">Login to your Account</h1>
       {error && <p className="text-red-500  md:text-xl">{error.message}</p>}
       <Form
-        className="flex flex-col gap-3 w-[75%] md:w-[50%]"
+        className="flex flex-col gap-3 w-[75%] md:w-[50%] "
         method="post"
         replace
       >
         <input
-          className="border p-2 text-lg"
+          className="border p-2 text-lg hover:border-pink-400"
           name="email"
           type="email"
           placeholder="Enter Email address"
         />
         <input
-          className="border p-2 text-lg"
+          className="border p-2 text-lg hover:border-pink-400"
           name="password"
           type="password"
           placeholder="Password"
@@ -70,12 +70,15 @@ const Login = () => {
           <label htmlFor="remember">Remember me</label>
         </div>
 
-        <button className="border bg-black text-white p-2 text-lg">
+        <button className="border bg-purple-300  font-bold p-2 text-lg mt-3">
           Log In
         </button>
         <p>
           Not an Existing User?
-          <Link to="/sign-up" className="underline text-blue-400">
+          <Link
+            to="/sign-up"
+            className="underline text-purple-600 ml-1 font-semibold"
+          >
             Sign Up
           </Link>
         </p>

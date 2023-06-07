@@ -30,16 +30,18 @@ const Wishlist = () => {
   }
 
   return (
-    <div>
+    <div className="min-h-[70vh] p-6">
+      <p className="text-center font-bold text-2xl ">WishList Items</p>
       {wishListItems.length === 0 && (
-        <p className="w-full h-[70vh]  flex text-xl font-bold justify-center items-center p-8">
+        <p className="w-full h-[55vh]  flex text-xl font-bold text-purple-700 justify-center items-center p-8">
           There are no items in your Wish list
         </p>
       )}
-
-      {wishListItems?.map((item) => (
-        <SingleItem product={item} key={item._id} />
-      ))}
+      <div className="flex flex-wrap gap-5  p-4  ">
+        {wishListItems?.map((item) => (
+          <SingleItem product={item} key={item._id} />
+        ))}
+      </div>
     </div>
   );
 };

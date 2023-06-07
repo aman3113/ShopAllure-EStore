@@ -19,14 +19,26 @@ import { action as LoginAction } from "./Pages/Auth/Login";
 import SignUp from "./Pages/Auth/SignUp";
 import { action as SignUpAction } from "./Pages/Auth/SignUp";
 
+import { loader as ProductLoader } from "./Pages/SingleItemPage";
 import MockAPI from "./Mockman";
 import ErrorElement from "./Pages/ErrorElement";
 import User from "./Pages/User/User.js";
+import { Provider } from "react-redux";
+import Store from "./Redux/Store";
+import SingleItemPage from "./Pages/SingleItemPage";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<Layout />} errorElement={<ErrorElement />}>
+      <Route
+        path="/"
+        element={
+          <Provider store={Store}>
+            <Layout />
+          </Provider>
+        }
+        errorElement={<ErrorElement />}
+      >
         <Route index={true} element={<Home />} />
         <Route path="clothes" element={<Clothes />} />
         <Route path="men" element={<Men />} />
@@ -55,6 +67,11 @@ function App() {
               <User />
             </ProtectedRoute>
           }
+        />
+        <Route
+          path="item/:productId"
+          element={<SingleItemPage />}
+          loader={ProductLoader}
         />
         <Route path="login" element={<Login />} action={LoginAction} />
         <Route path="sign-up" element={<SignUp />} action={SignUpAction} />

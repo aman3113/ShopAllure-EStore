@@ -46,26 +46,32 @@ const User = () => {
           editForm={editForm}
         />
       ) : (
-        <div className="w-[40%] border-2 border-black p-3">
-          <h1 className="text-center">Account</h1>
+        <div className="w-[40%] border-2 border-black p-3 shadow-md shadow-purple-300 rounded-md">
+          <h1 className="text-center font-bold text-xl m-4">Account</h1>
           <div>
-            <div className=" flex bg-blue-300">
+            <div className=" flex ">
               <span
-                className="w-[50%] text-center cursor-pointer"
+                className={`w-[50%] text-center cursor-pointer ${
+                  details === "profile" &&
+                  "bg-purple-400 border-b-2 border-purple-900"
+                }`}
                 onClick={() => setDetails("profile")}
               >
                 Profile
               </span>
               <span
-                className="w-[50%] text-center cursor-pointer"
+                className={`w-[50%] text-center cursor-pointer ${
+                  details === "address" &&
+                  "bg-purple-400 border-b-2  border-purple-900"
+                }`}
                 onClick={() => setDetails("address")}
               >
                 Address
               </span>
             </div>
             {details === "profile" && (
-              <div>
-                <p className="font-semibold">Profile Details</p>
+              <div className="p-2">
+                <p className="font-bold mb-3">Profile Details</p>
                 <p>
                   <span className="font-semibold">Full Name :</span> {firstName}{" "}
                   {lastName}
@@ -76,15 +82,15 @@ const User = () => {
                 </p>
                 <button
                   onClick={handleClick}
-                  className="bg-red-600 text-white py-1 px-2 rounded-lg"
+                  className="bg-red-600 text-white py-1 px-2 rounded-lg mt-3"
                 >
                   LogOut
                 </button>
               </div>
             )}
             {details === "address" && (
-              <div>
-                <p className="font-semibold underline my-2">My Addresses</p>
+              <div className="p-2">
+                <p className="font-bold underline mb-4">My Addresses</p>
                 {addressArr.map((address, idx) => (
                   <div key={idx} className="bg-slate-100 p-2 m-1">
                     <p className="font-semibold">{address.name}</p>
@@ -94,15 +100,15 @@ const User = () => {
                       {address.city}, {address.state}
                     </p>
                     <p>{address.country}</p>
-                    <div>
+                    <div className="mt-1">
                       <button
-                        className="border text-blue-800 bg-white py-1 mr-3 px-2 rounded-lg"
+                        className="border text-blue-800 bg-white py-1 mr-3 px-2 rounded-lg font-semibold"
                         onClick={() => handleEdit(idx)}
                       >
                         Edit
                       </button>
                       <button
-                        className="border text-red-500 bg-white py-1 px-2 rounded-lg"
+                        className="border text-red-500 bg-white py-1 px-2 rounded-lg font-semibold"
                         onClick={() => handleRemove(idx)}
                       >
                         Remove
@@ -111,7 +117,7 @@ const User = () => {
                   </div>
                 ))}
                 <button
-                  className="font-bold"
+                  className="font-bold mt-3"
                   onClick={() => setShowForm((prev) => !prev)}
                 >
                   + Add new address

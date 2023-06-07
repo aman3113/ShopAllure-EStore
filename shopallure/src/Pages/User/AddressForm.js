@@ -67,7 +67,7 @@ const AddressForm = ({ setShowForm, editIndex, editForm, setEditForm }) => {
   }
 
   return (
-    <div className=" w-[35%] border border-black py-3 px-8 rounded-lg">
+    <div className=" w-[35%] border border-black py-3 px-8 shadow-md shadow-purple-300 rounded-md">
       <p className="font-bold text-center text-lg m-3">Add New Address</p>
       <form className="flex flex-col">
         <input

@@ -1,5 +1,3 @@
-import { useSelector } from "react-redux";
-
 export async function authenticateUser(creds, path) {
   const resp = await fetch(`/api/auth/${path}`, {
     method: "POST",

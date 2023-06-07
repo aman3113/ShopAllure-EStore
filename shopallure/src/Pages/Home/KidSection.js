@@ -17,10 +17,7 @@ const KidsSection = () => {
             Find your unique style
           </h3>
           <div className="mt-5">
-            <Link
-              to="/clothes"
-              className="border bg-black px-3 py-2 text-white"
-            >
+            <Link to="/kids" className="border bg-black px-3 py-2 text-white">
               Shop Collection
             </Link>
           </div>

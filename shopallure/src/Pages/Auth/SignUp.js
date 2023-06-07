@@ -58,26 +58,26 @@ const SignUp = () => {
       >
         <div className="flex items-center gap-3">
           <input
-            className="border p-2 w-[50%] text-lg"
+            className="border p-2 w-[50%] text-lg  hover:border-pink-400"
             type="text"
             name="firstName"
             placeholder="First name"
           />
           <input
-            className="border w-[50%] p-2 text-lg"
+            className="border w-[50%] p-2 text-lg  hover:border-pink-400"
             type="text"
             name="lastName"
             placeholder="Last name"
           />
         </div>
         <input
-          className="border p-2 text-lg"
+          className="border p-2 text-lg  hover:border-pink-400"
           name="email"
           type="email"
           placeholder="Enter Email address"
         />
         <input
-          className="border p-2 text-lg"
+          className="border p-2 text-lg  hover:border-pink-400"
           name="password"
           type="password"
           placeholder="Password"
@@ -87,12 +87,12 @@ const SignUp = () => {
             type="checkbox"
             id="remember"
             name="checkbox"
-            className="w-4 h-4"
+            className="w-4 h-4 "
           />
           <label htmlFor="remember">Remember me</label>
         </div>
 
-        <button className="border bg-black text-white p-2 text-lg">
+        <button className="border bg-purple-300  font-bold p-2 text-lg mt-3">
           Sign Up
         </button>
       </Form>

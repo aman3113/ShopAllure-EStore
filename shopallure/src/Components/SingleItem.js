@@ -1,24 +1,16 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiFillHeart } from "react-icons/ai";
 import { AiOutlineHeart } from "react-icons//ai";
+import { BsStarFill } from "react-icons/bs";
 
 import { handleCartItem } from "../Redux/CartsSlice";
 import { handleWishlistItem } from "../Redux/WishlistSlice";
 
 const SingleItem = ({ product }) => {
-  const {
-    _id,
-    title,
-    image,
-    category,
-    trending,
-    reviews,
-    in_stock,
-    original_price,
-    price,
-  } = product;
+  const { _id, title, image, rating, in_stock, original_price, price } =
+    product;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cartItems = useSelector((store) => store.cart.value);
@@ -88,16 +80,23 @@ const SingleItem = ({ product }) => {
             </button>
           )}
         </div>
-        <div className="">
+        <Link to={`/item/${_id}`}>
           <img
             className="w-[80%] border border-black rounded-sm "
             src={image}
             alt="product"
           />
-        </div>
+        </Link>
       </div>
       <div className="p-2">
-        <p className="font-semibold my-2">{title}</p>
+        <div className="flex justify-between">
+          <span className="font-semibold my-2">{title}</span>
+          <span className="font-semibold text-sm  flex gap-1 items-center">
+            {rating}
+            <BsStarFill className="text-yellow-300" size={15} />
+          </span>
+        </div>
+
         <p className="mb-3">
           <span className="font-semibold">Rs.{price}</span>{" "}
           <span className="text-slate-400 text-sm line-through">

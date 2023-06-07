@@ -14,7 +14,7 @@ const Kids = () => {
     <div>
       <Navbar itemArray={kidsProducts} />
       <div className="flex justify-center  p-6">
-        <div className="flex flex-wrap gap-5 border-2   ">
+        <div className="flex flex-wrap gap-5   ">
           {filteredProducts.map((product) => (
             <SingleItem key={product._id} product={product} />
           ))}
