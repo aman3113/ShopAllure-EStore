@@ -11,9 +11,8 @@ export async function action({ request }) {
   const email = formData.get("email");
   const password = formData.get("password");
   const isChecked = formData.get("checkbox");
-  console.log(isChecked);
   try {
-    const { encodedToken, foundUser } = await authenticateUser(
+    const resp = await authenticateUser(
       {
         email,
         password,
@@ -22,20 +21,21 @@ export async function action({ request }) {
       },
       "signup"
     );
+    const { encodedToken, createdUser } = resp;
+    console.log(resp);
     if (isChecked) {
       localStorage.setItem("encodedToken", encodedToken);
-      localStorage.setItem("user", JSON.stringify(foundUser));
-
+      localStorage.setItem("user", JSON.stringify(createdUser));
       localStorage.setItem("eCommerceLoggedIn", true);
     } else {
       sessionStorage.setItem("encodedToken", encodedToken);
-      sessionStorage.setItem("user", JSON.stringify(foundUser));
-
+      sessionStorage.setItem("user", JSON.stringify(createdUser));
       sessionStorage.setItem("eCommerceLoggedIn", true);
     }
     window.location.reload();
     return null;
   } catch (err) {
+    console.log(err);
     return err;
   }
 }
