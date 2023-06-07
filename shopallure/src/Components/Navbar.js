@@ -51,13 +51,14 @@ const Navbar = ({ itemArray }) => {
       <div className="flex sm:items-center flex-col-reverse sm:flex-row ">
         <div className="flex gap-4 m-2">
           <p
-            className="cursor-pointer"
+            className="cursor-pointer font-bold"
             onClick={() => setShowFilterTab((prev) => !prev)}
           >
             Filters
           </p>
           {showFilterTab && (
             <p
+              className="underline font-semibold cursor-pointer"
               onClick={() =>
                 setFilters({
                   trending: false,
@@ -82,10 +83,12 @@ const Navbar = ({ itemArray }) => {
         />
       </div>
       {showFilterTab && (
-        <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
-          <div>
+        <div className="flex flex-col sm:flex-row gap-8 sm:items-center">
+          <div className="flex gap-3">
             <span
-              className="border-2 px-2 py-1"
+              className={`border-2 px-2 py-1 rounded-md cursor-pointer ${
+                filters.trending && "bg-pink-200"
+              }`}
               onClick={() =>
                 setFilters((prev) => ({ ...prev, trending: !prev.trending }))
               }
@@ -93,17 +96,21 @@ const Navbar = ({ itemArray }) => {
               Trending
             </span>
             <span
-              className="border-2 px-2 py-1"
+              className={`border-2 px-2 py-1 rounded-md cursor-pointer ${
+                filters.inStock && "bg-pink-200"
+              }`}
               onClick={() =>
-                setFilters((prev) => ({ ...prev, trending: !prev.inStock }))
+                setFilters((prev) => ({ ...prev, inStock: !prev.inStock }))
               }
             >
               In Stock
             </span>
           </div>
 
-          <div>
+          <div className="flex gap-3 items-center">
+            <span className="font-semibold">Size:</span>
             <select
+              className="p-1 border border-black rounded-md cursor-pointer"
               name="size"
               id="size"
               onChange={(e) =>
@@ -119,12 +126,14 @@ const Navbar = ({ itemArray }) => {
               <option value="XL">XL</option>
               <option value="XXL">XXL</option>
             </select>
+            <span className="font-semibold">Price:</span>{" "}
             <input
               type="range"
               min="500"
               max="5000"
               step="200"
               defaultValue="5000"
+              className="cursor-pointer"
               onChange={(e) =>
                 setFilters((prev) => ({ ...prev, price: e.target.value }))
               }

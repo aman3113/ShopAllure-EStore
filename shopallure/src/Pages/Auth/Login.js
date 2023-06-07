@@ -14,12 +14,15 @@ export async function action({ request }) {
       { email, password },
       "login"
     );
-    console.log(encodedToken);
     if (isChecked) {
       localStorage.setItem("encodedToken", encodedToken);
+      localStorage.setItem("user", JSON.stringify(foundUser));
+
       localStorage.setItem("eCommerceLoggedIn", true);
     } else {
       sessionStorage.setItem("encodedToken", encodedToken);
+      sessionStorage.setItem("user", JSON.stringify(foundUser));
+
       sessionStorage.setItem("eCommerceLoggedIn", true);
     }
     window.location.reload();
@@ -32,6 +35,7 @@ export async function action({ request }) {
 const Login = () => {
   const { eCommerceLoggedIn } = useSelector((store) => store.auth);
   const error = useActionData();
+
   if (eCommerceLoggedIn) {
     return <Navigate to="/" />;
   }
@@ -70,7 +74,7 @@ const Login = () => {
           Log In
         </button>
         <p>
-          Not an Existing User?{" "}
+          Not an Existing User?
           <Link to="/sign-up" className="underline text-blue-400">
             Sign Up
           </Link>

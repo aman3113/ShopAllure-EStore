@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Navigate, redirect, useActionData } from "react-router-dom";
+import { Form, Navigate, useActionData } from "react-router-dom";
 import { authenticateUser } from "../../api";
 import { useSelector } from "react-redux";
 
@@ -24,9 +24,13 @@ export async function action({ request }) {
     );
     if (isChecked) {
       localStorage.setItem("encodedToken", encodedToken);
+      localStorage.setItem("user", JSON.stringify(foundUser));
+
       localStorage.setItem("eCommerceLoggedIn", true);
     } else {
       sessionStorage.setItem("encodedToken", encodedToken);
+      sessionStorage.setItem("user", JSON.stringify(foundUser));
+
       sessionStorage.setItem("eCommerceLoggedIn", true);
     }
     window.location.reload();
@@ -39,6 +43,7 @@ export async function action({ request }) {
 const SignUp = () => {
   const { eCommerceLoggedIn } = useSelector((store) => store.auth);
   const error = useActionData();
+
   if (eCommerceLoggedIn) {
     return <Navigate to="/" />;
   }

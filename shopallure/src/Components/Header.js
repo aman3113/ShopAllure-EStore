@@ -7,6 +7,7 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { RxCross2 } from "react-icons/rx";
 import { useState } from "react";
+import { BiUserCircle } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "../Redux/ProductsSlice";
 import { getProducts } from "../api";
@@ -25,20 +26,13 @@ const Header = () => {
     getData();
   }, []);
 
-  function handleClick() {
-    localStorage.removeItem("encodedToken");
-    localStorage.removeItem("eCommerceLoggedIn");
-    sessionStorage.removeItem("encodedToken");
-    sessionStorage.removeItem("eCommerceLoggedIn");
-    window.location.reload();
-  }
   return (
     <header className="flex  border-2 border-green-500 items-center">
       {openModal && (
         <div className="absolute top-0 bottom-0 left-0 right-0 border-2 bg-blue-50 opacity-80">
           <div className="flex flex-col ">
             <RxCross2 className="ml-auto" onClick={() => setOpenModal(false)} />
-            <NavLink>{eCommerceLoggedIn ? "LOG OUT" : "LOG IN"}</NavLink>
+
             <NavLink>BUY-CLOTHES</NavLink>
             <NavLink>MEN</NavLink>
             <NavLink>WOMEN</NavLink>
@@ -61,11 +55,9 @@ const Header = () => {
 
       <div className="flex items-center gap-2 ml-auto">
         <div className="hidden md:flex items-center gap-4">
-          {eCommerceLoggedIn ? (
-            <button onClick={handleClick}>LOG OUT</button>
-          ) : (
-            <NavLink to="/login">LOG IN</NavLink>
-          )}
+          <Link to="/user">
+            <BiUserCircle size={25} />
+          </Link>
 
           <Link to="/wishlist">
             <MdOutlineFavoriteBorder size={25} />

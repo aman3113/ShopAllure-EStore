@@ -17,6 +17,7 @@ const SingleItem = ({ product }) => {
     reviews,
     in_stock,
     original_price,
+    price,
   } = product;
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -38,7 +39,6 @@ const SingleItem = ({ product }) => {
       body: JSON.stringify({ product }),
     });
     const data = await resp.json();
-    console.log(data);
     if (resp.ok) {
       path === "cart"
         ? dispatch(handleCartItem(data.cart))
@@ -60,9 +60,16 @@ const SingleItem = ({ product }) => {
   }
 
   return (
-    <div className=" w-[70vw] sm:w-[35vw] lg:w-[20vw] p-2 hover:translate-y-1 shadow shadow-black ">
+    <div
+      className={` w-[70vw] sm:w-[35vw] lg:w-[20vw] p-2 hover:translate-y-1 bg-purple-50 rounded-md shadow-sm shadow-gray-400 relative`}
+    >
+      {!in_stock && (
+        <div className="absolute top-0 bottom-0 left-0 right-0 bg-slate-400 bg-opacity-50 text-white z-10 flex justify-center items-center text-2xl font-bold ">
+          <p className="-rotate-45">Out Of Stock</p>
+        </div>
+      )}
       <div className="w-full relative ">
-        <div className="absolute top-0 right-0">
+        <div className="absolute top-1 right-1">
           {itemInWishlist ? (
             <button onClick={() => deleteFromWishList(_id)}>
               <AiFillHeart className="text-red-600" size={20} />
@@ -81,15 +88,36 @@ const SingleItem = ({ product }) => {
             </button>
           )}
         </div>
-        <img className="w-ful h-full" src={image} alt="product" />
+        <div className="">
+          <img
+            className="w-[80%] border border-black rounded-sm "
+            src={image}
+            alt="product"
+          />
+        </div>
       </div>
-      <div>
-        <p>{title}</p>
-        <p>Price: Rs.{original_price}</p>
+      <div className="p-2">
+        <p className="font-semibold my-2">{title}</p>
+        <p className="mb-3">
+          <span className="font-semibold">Rs.{price}</span>{" "}
+          <span className="text-slate-400 text-sm line-through">
+            {original_price}
+          </span>
+          <span className="text-green-800 font-semibold ml-7">
+            ({Math.round(((original_price - price) / original_price) * 100)}%
+            off)
+          </span>
+        </p>
         {itemInCart ? (
-          <button onClick={() => navigate("/cart")}>Go to Cart</button>
+          <button
+            className="w-full p-1 bg-green-400 text-white font-semibold"
+            onClick={() => navigate("/cart")}
+          >
+            Go to Cart
+          </button>
         ) : (
           <button
+            className="w-full p-1 bg-blue-500 text-white font-semibold"
             onClick={() => {
               eCommerceLoggedIn
                 ? handleAddToCartWishList(product, "cart")

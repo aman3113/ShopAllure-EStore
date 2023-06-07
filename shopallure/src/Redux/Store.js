@@ -3,6 +3,7 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 import productsSlice from "./ProductsSlice";
 import cartSlice from "./CartsSlice";
 import wishlistSlice from "./WishlistSlice";
+import userSlice from "./UserSlice";
 
 const encodedToken =
   localStorage.getItem("encodedToken") ??
@@ -22,6 +23,7 @@ const Store = configureStore({
     auth: authSlice.reducer,
     products: productsSlice.reducer,
     wishlist: wishlistSlice.reducer,
+    user: userSlice.reducer,
   },
 });
 

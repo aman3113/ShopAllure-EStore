@@ -44,44 +44,53 @@ const CartItem = ({ product }) => {
   }
 
   return (
-    <div className=" w-[40vw] sm:w-[30vw] lg:w-[20vw] p-2 hover:translate-y-1 shadow shadow-black ">
-      <div>
-        <img src={image} alt="" />
-      </div>
-      <div>
-        <p className="text-lg font-semibold">{title}</p>
-        <p>
-          Rs.{price}
-          <span className="line-through text-sm text-gray-500">
-            Rs.{original_price}
-          </span>
-        </p>
-        <p>
-          {Math.round(((original_price - price) / original_price) * 100)}% off
-        </p>
-        <div className="flex gap-2 items-center">
-          <span>Quantity: </span>
-          <span className="flex gap-1 items-center">
-            <button
-              onClick={() => {
-                qty > 1
-                  ? handleItemIncrementDecrement(_id, "decrement")
-                  : deleteFromCart(_id);
-              }}
-            >
-              <BiMinusCircle size={20} />
-            </button>
-            <span>{qty}</span>
-            <button
-              onClick={() => handleItemIncrementDecrement(_id, "increment")}
-            >
-              <BiPlusCircle size={20} />
-            </button>
-          </span>
+    <tr className="border-y-2 border-black">
+      <td className="cell">
+        <div className="flex items-center gap-2">
+          <img
+            src={image}
+            alt=""
+            className="w-[100px] h-[100px] hidden sm:block"
+          />
+          <p>{title}</p>
         </div>
-        <button onClick={() => deleteFromCart(_id)}>Remove From cart</button>
-      </div>
-    </div>
+      </td>
+      <td className="cell"> Rs.{original_price}</td>
+      <td>
+        {Math.round(((original_price - price) / original_price) * 100)}% off
+      </td>
+      <td className="cell">
+        <div className="flex items-center">
+          <button
+            className="border border-gray-500  px-2"
+            onClick={() => {
+              qty > 1
+                ? handleItemIncrementDecrement(_id, "decrement")
+                : deleteFromCart(_id);
+            }}
+          >
+            -
+          </button>
+          <span className="border border-gray-500  px-2">{qty}</span>
+          <button
+            className="border border-gray-500  px-2"
+            onClick={() => handleItemIncrementDecrement(_id, "increment")}
+          >
+            +
+          </button>
+        </div>
+      </td>
+      <td className="cell">
+        {" "}
+        <button onClick={() => deleteFromCart(_id)}>×</button>
+      </td>
+    </tr>
+
+    // <div>
+    //   {/* <p>
+    //     {Math.round(((original_price - price) / original_price) * 100)}% off
+    //   </p> */}
+    // </div>
   );
 };
 

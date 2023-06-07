@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .cell {
+    @apply border-spacing-x-7  px-4;
+  }
+}
+
 * {
   box-sizing: border-box;
   padding: 0;

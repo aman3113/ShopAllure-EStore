@@ -21,6 +21,7 @@ import { action as SignUpAction } from "./Pages/Auth/SignUp";
 
 import MockAPI from "./Mockman";
 import ErrorElement from "./Pages/ErrorElement";
+import User from "./Pages/User/User.js";
 
 function App() {
   const router = createBrowserRouter(
@@ -44,6 +45,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Cart />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="user"
+          element={
+            <ProtectedRoute>
+              <User />
             </ProtectedRoute>
           }
         />
