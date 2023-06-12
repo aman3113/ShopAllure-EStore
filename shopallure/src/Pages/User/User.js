@@ -39,7 +39,7 @@ const User = () => {
     window.location.reload();
   }
   return (
-    <div className="min-h-[70vh] flex items-center justify-center p-4">
+    <div className="min-h-[70vh] flex items-center justify-center ">
       {showForm ? (
         <AddressForm
           setShowForm={setShowForm}
@@ -48,7 +48,7 @@ const User = () => {
           editForm={editForm}
         />
       ) : (
-        <div className="w-[40%] border-2 border-black p-3 shadow-md shadow-purple-300 rounded-md">
+        <div className="w-[80%] md:w-[60%] border-2 border-black p-1 md:p-3 shadow-md shadow-purple-300 rounded-md">
           <h1 className="text-center font-bold text-xl m-4">Account</h1>
           <div>
             <div className=" flex ">

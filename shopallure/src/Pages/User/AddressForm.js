@@ -67,7 +67,7 @@ const AddressForm = ({ setShowForm, editIndex, editForm, setEditForm }) => {
   }
 
   return (
-    <div className=" w-[35%] border border-black py-3 px-8 shadow-md shadow-purple-300 rounded-md">
+    <div className="w-[90%] md:w-[60%] lg:w-[35%] border border-black py-3 my-4 px-8 shadow-md shadow-purple-300 rounded-md">
       <p className="font-bold text-center text-lg m-3">Add New Address</p>
       <form className="flex flex-col">
         <input
@@ -126,7 +126,7 @@ const AddressForm = ({ setShowForm, editIndex, editForm, setEditForm }) => {
           value={formDetails.phoneNumber}
           onChange={handleChange}
         />
-        <div className="flex justify-around m-3">
+        <div className="flex justify-around my-3 gap-1 md:m-3">
           {editForm ? (
             <button
               className="border bg-blue-700 text-white px-3 py-1 rounded-lg"
