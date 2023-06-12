@@ -5,6 +5,7 @@ import { handleCartItem } from "../Redux/CartsSlice";
 import { handleWishlistItem } from "../Redux/WishlistSlice";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { BsStarFill } from "react-icons/bs";
+import { toast } from "react-toastify";
 
 export async function loader({ params }) {
   const productId = params.productId;
@@ -52,9 +53,13 @@ const SingleItemPage = () => {
     });
     const data = await resp.json();
     if (resp.ok) {
-      path === "cart"
-        ? dispatch(handleCartItem(data.cart))
-        : dispatch(handleWishlistItem(data.wishlist));
+      if (path === "cart") {
+        dispatch(handleCartItem(data.cart));
+        toast.success(" Item Added to cart");
+      } else {
+        dispatch(handleWishlistItem(data.wishlist));
+        toast.success(" Item Added to wishlist");
+      }
     }
   }
 
@@ -68,13 +73,14 @@ const SingleItemPage = () => {
     const data = await resp.json();
     if (resp.ok) {
       dispatch(handleWishlistItem(data.wishlist));
+      toast.warn(" Item removed from wishlist");
     }
   }
 
   return (
     <div className="w-full min-h-[70vh] flex justify-center items-center p-5">
-      <div className="w-[60%] flex items-center gap-4 px-3 py-2  bg-purple-50 rounded-md shadow-sm shadow-gray-400">
-        <div className="w-[50%] relative ">
+      <div className="w-[80%] sm:w-[60%] flex flex-col sm:flex-row items-center gap-4 px-3 py-2  bg-purple-50 rounded-md shadow-sm shadow-gray-400">
+        <div className="w-[60%] md:w-[50%] relative ">
           <div className="absolute top-1 right-1">
             {itemInWishlist ? (
               <button onClick={() => deleteFromWishList(_id)}>

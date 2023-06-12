@@ -14,10 +14,12 @@ const Home = () => {
       <WomenSection />
       <div>
         <p className="font-bold text-2xl text-center">Trending Products</p>
-        <div className="flex gap-4 max-w-[100vw] overflow-x-auto p-4">
-          {trendingProducts?.map((product) => (
-            <SingleItem product={product} key={product._id} />
-          ))}
+        <div className="overflow-x-auto mx-2 mt-4">
+          <div className="flex sm:gap-4 gap-2  max-w-[100vw]  ">
+            {trendingProducts?.map((product) => (
+              <SingleItem product={product} key={product._id} />
+            ))}
+          </div>
         </div>
       </div>
 

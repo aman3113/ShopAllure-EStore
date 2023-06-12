@@ -4,7 +4,7 @@ import KidsBg from "../../Images/kidsbg.jpg";
 const KidsSection = () => {
   return (
     <section
-      className="w-full h-[50vh] md:h-[80vh] lg:h-[100vh]  bg-cover bg-center md:bg-fixed my-4 bg-no-repeat border-2 border-yellow-700 "
+      className="w-full h-[50vh] md:h-[80vh] lg:h-[100vh]  bg-cover bg-center md:bg-fixed my-4 bg-no-repeat  "
       style={{ backgroundImage: `url(${KidsBg})` }}
     >
       <div className=" w-full h-full flex items-center justify-center bg-black bg-opacity-30">

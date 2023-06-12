@@ -33,19 +33,6 @@ const Header = () => {
 
   return (
     <header className="flex items-center border-b px-2 shadow-md shadow-purple-300">
-      {openModal && (
-        <div className="absolute top-0 bottom-0 left-0 right-0 border-2 bg-blue-50 opacity-100">
-          <div className="flex flex-col ">
-            <RxCross2 className="ml-auto" onClick={() => setOpenModal(false)} />
-
-            <NavLink>BUY-CLOTHES</NavLink>
-            <NavLink>MEN</NavLink>
-            <NavLink>WOMEN</NavLink>
-            <NavLink>KIDS</NavLink>
-          </div>
-        </div>
-      )}
-
       <div className="md:flex gap-3 hidden ">
         <NavLink
           style={({ isActive }) => ({
@@ -70,7 +57,7 @@ const Header = () => {
             color: `${isActive ? "purple" : "black"}`,
             fontWeight: `${isActive ? "500" : ""}`,
           })}
-          to="women"
+          to="/women"
         >
           WOMEN
         </NavLink>
@@ -79,7 +66,7 @@ const Header = () => {
             color: `${isActive ? "purple" : "black"}`,
             fontWeight: `${isActive ? "500" : ""}`,
           })}
-          to="kids"
+          to="/kids"
         >
           KIDS
         </NavLink>
@@ -114,8 +101,88 @@ const Header = () => {
           </Link>
         </div>
 
-        <div className="md:hidden">
+        <div className="md:hidden relative">
           <RxHamburgerMenu onClick={() => setOpenModal(true)} />
+          {openModal && (
+            <div className="absolute  top-0 right-0 p-4 w-[200px] border-1 border-black bg-white z-50 shadow-md shadow-purple-400 rounded-lg">
+              <div className="flex flex-col ">
+                <RxCross2
+                  className="ml-auto"
+                  onClick={() => setOpenModal(false)}
+                />
+
+                <NavLink
+                  to="/clothes"
+                  style={({ isActive }) => ({
+                    color: `${isActive ? "purple" : "black"}`,
+                    fontWeight: `${isActive ? "500" : ""}`,
+                  })}
+                >
+                  BUY-CLOTHES
+                </NavLink>
+                <NavLink
+                  to="/men"
+                  style={({ isActive }) => ({
+                    color: `${isActive ? "purple" : "black"}`,
+                    fontWeight: `${isActive ? "500" : ""}`,
+                  })}
+                >
+                  MEN
+                </NavLink>
+                <NavLink
+                  to="/women"
+                  style={({ isActive }) => ({
+                    color: `${isActive ? "purple" : "black"}`,
+                    fontWeight: `${isActive ? "500" : ""}`,
+                  })}
+                >
+                  WOMEN
+                </NavLink>
+                <NavLink
+                  to="/kids"
+                  style={({ isActive }) => ({
+                    color: `${isActive ? "purple" : "black"}`,
+                    fontWeight: `${isActive ? "500" : ""}`,
+                  })}
+                >
+                  KIDS
+                </NavLink>
+
+                <div className="flex flex-col mt-3">
+                  <NavLink
+                    to="/cart"
+                    className="flex items-center gap-1"
+                    style={({ isActive }) => ({
+                      color: `${isActive ? "purple" : "black"}`,
+                      fontWeight: `${isActive ? "500" : ""}`,
+                    })}
+                  >
+                    <MdOutlineShoppingCart /> CART
+                  </NavLink>
+                  <NavLink
+                    to="/wishlist"
+                    className="flex items-center gap-1"
+                    style={({ isActive }) => ({
+                      color: `${isActive ? "purple" : "black"}`,
+                      fontWeight: `${isActive ? "500" : ""}`,
+                    })}
+                  >
+                    <MdOutlineFavoriteBorder /> WISHLIST
+                  </NavLink>
+                  <NavLink
+                    to="/user"
+                    className="flex items-center gap-1"
+                    style={({ isActive }) => ({
+                      color: `${isActive ? "purple" : "black"}`,
+                      fontWeight: `${isActive ? "500" : ""}`,
+                    })}
+                  >
+                    <BiUserCircle /> PROFILE
+                  </NavLink>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </header>

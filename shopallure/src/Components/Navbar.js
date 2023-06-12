@@ -48,7 +48,7 @@ const Navbar = ({ itemArray }) => {
   }
   return (
     <nav className="p-1 px-4 sm:p-4 m-1">
-      <div className="flex sm:items-center flex-col-reverse sm:flex-row ">
+      <div className="flex items-center  sm:flex-row ">
         <div className="flex gap-4 m-2">
           <p
             className="cursor-pointer font-bold"
@@ -74,7 +74,7 @@ const Navbar = ({ itemArray }) => {
         </div>
 
         <input
-          className="p-1 px-2 border border-black text-gray-500 w-[80%] sm:w-[60%] md:w-[40%] rounded-lg ml-auto mr-auto sm:mr-0"
+          className="p-1 px-2 border border-black text-gray-500 w-[60%] md:w-[40%] rounded-lg ml-auto mr-auto sm:mr-0"
           type="search"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
@@ -83,7 +83,7 @@ const Navbar = ({ itemArray }) => {
         />
       </div>
       {showFilterTab && (
-        <div className="flex flex-col sm:flex-row gap-8 sm:items-center">
+        <div className="flex flex-col sm:flex-row gap-8 my-3 sm:items-center">
           <div className="flex gap-3">
             <span
               className={`border-2 px-2 py-1 rounded-md cursor-pointer ${
@@ -110,7 +110,7 @@ const Navbar = ({ itemArray }) => {
           <div className="flex gap-3 items-center">
             <span className="font-semibold">Size:</span>
             <select
-              className="p-1 border border-black rounded-md cursor-pointer"
+              className="p-1 border text-sm md:text-base border-black rounded-md cursor-pointer"
               name="size"
               id="size"
               onChange={(e) =>

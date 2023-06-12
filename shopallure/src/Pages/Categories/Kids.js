@@ -13,8 +13,11 @@ const Kids = () => {
   return (
     <div>
       <Navbar itemArray={kidsProducts} />
-      <div className="flex justify-center  p-6">
-        <div className="flex flex-wrap gap-5   ">
+      <div className="font-bold text-lg text-purple-800">
+        Showing "{filteredProducts.length}" items
+      </div>
+      <div className="flex   p-6">
+        <div className="flex flex-wrap gap-5 justify-center  ">
           {filteredProducts.map((product) => (
             <SingleItem key={product._id} product={product} />
           ))}

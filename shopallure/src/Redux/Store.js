@@ -14,7 +14,23 @@ const eCommerceLoggedIn =
 
 const authSlice = createSlice({
   name: "auth",
-  initialState: { encodedToken, eCommerceLoggedIn },
+  initialState: {
+    encodedToken: encodedToken ?? "",
+    eCommerceLoggedIn: eCommerceLoggedIn ?? false,
+  },
+  reducers: {
+    handleAuth: (state) => {
+      const encodedToken =
+        localStorage.getItem("encodedToken") ??
+        sessionStorage.getItem("encodedToken");
+      const eCommerceLoggedIn =
+        localStorage.getItem("eCommerceLoggedIn") ??
+        sessionStorage.getItem("eCommerceLoggedIn");
+
+      state.eCommerceLoggedIn = eCommerceLoggedIn;
+      state.encodedToken = encodedToken;
+    },
+  },
 });
 
 const spinnerSlice = createSlice({
@@ -41,4 +57,5 @@ const Store = configureStore({
 });
 
 export const { toggleSpinner } = spinnerSlice.actions;
+export const { handleAuth } = authSlice.actions;
 export default Store;

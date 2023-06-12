@@ -19,12 +19,15 @@ const profile = JSON.parse(
 const userSlice = createSlice({
   name: "user",
   initialState: {
-    profile,
+    profile: profile ?? {},
     address,
   },
   reducers: {
     setAddress: (state, action) => {
       state.address = action.payload;
+    },
+    setProfile: (state, action) => {
+      state.profile = action.payload;
     },
   },
 });

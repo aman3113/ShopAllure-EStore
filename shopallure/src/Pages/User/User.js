@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AddressForm from "./AddressForm";
 import { setAddress } from "../../Redux/UserSlice";
+import { toast } from "react-toastify";
 
 const User = () => {
   const [details, setDetails] = useState("profile");
@@ -34,6 +35,7 @@ const User = () => {
     sessionStorage.removeItem("eCommerceLoggedIn");
     sessionStorage.removeItem("user");
     sessionStorage.removeItem("user");
+    toast("You are logged out");
     window.location.reload();
   }
   return (

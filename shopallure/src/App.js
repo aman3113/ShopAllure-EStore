@@ -15,9 +15,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import Wishlist from "./Pages/Wishlist";
 import Cart from "./Pages/Cart";
 import Login from "./Pages/Auth/Login";
-import { action as LoginAction } from "./Pages/Auth/Login";
 import SignUp from "./Pages/Auth/SignUp";
-import { action as SignUpAction } from "./Pages/Auth/SignUp";
 
 import { loader as ProductLoader } from "./Pages/SingleItemPage";
 import MockAPI from "./Mockman";
@@ -26,6 +24,7 @@ import User from "./Pages/User/User.js";
 import { Provider } from "react-redux";
 import Store from "./Redux/Store";
 import SingleItemPage from "./Pages/SingleItemPage";
+import Checkout from "./Pages/Checkout";
 
 function App() {
   const router = createBrowserRouter(
@@ -73,8 +72,9 @@ function App() {
           element={<SingleItemPage />}
           loader={ProductLoader}
         />
-        <Route path="login" element={<Login />} action={LoginAction} />
-        <Route path="sign-up" element={<SignUp />} action={SignUpAction} />
+        <Route path="login" element={<Login />} />
+        <Route path="sign-up" element={<SignUp />} />
+        <Route path="checkout" element={<Checkout />} />
         <Route path="/mockapi" element={<MockAPI />} />
       </Route>
     )

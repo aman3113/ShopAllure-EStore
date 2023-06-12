@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AiFillHeart } from "react-icons/ai";
 import { AiOutlineHeart } from "react-icons//ai";
 import { BsStarFill } from "react-icons/bs";
+import { toast } from "react-toastify";
 
 import { handleCartItem } from "../Redux/CartsSlice";
 import { handleWishlistItem } from "../Redux/WishlistSlice";
@@ -31,10 +32,16 @@ const SingleItem = ({ product }) => {
       body: JSON.stringify({ product }),
     });
     const data = await resp.json();
+
     if (resp.ok) {
-      path === "cart"
-        ? dispatch(handleCartItem(data.cart))
-        : dispatch(handleWishlistItem(data.wishlist));
+      if (path === "cart") {
+        dispatch(handleCartItem(data.cart));
+        console.log("i am here");
+        toast.success(" Item Added to cart");
+      } else {
+        dispatch(handleWishlistItem(data.wishlist));
+        toast.success(" Item Added to wishlist");
+      }
     }
   }
 
@@ -48,12 +55,13 @@ const SingleItem = ({ product }) => {
     const data = await resp.json();
     if (resp.ok) {
       dispatch(handleWishlistItem(data.wishlist));
+      toast.info(" Item removed from wishlist");
     }
   }
 
   return (
     <div
-      className={` w-[70vw] sm:w-[35vw] lg:w-[20vw] p-2 hover:translate-y-1 bg-purple-50 rounded-md shadow-sm shadow-gray-400 relative`}
+      className={` w-[60vw] sm:w-[35vw] md:w-[25vw] lg:w-[20vw] min-w-[200px] p-2 hover:translate-y-1 bg-purple-50 rounded-md shadow-sm shadow-gray-400 relative`}
     >
       {!in_stock && (
         <div className="absolute top-0 bottom-0 left-0 right-0 bg-slate-400 bg-opacity-50 text-white z-10 flex justify-center items-center text-2xl font-bold ">
