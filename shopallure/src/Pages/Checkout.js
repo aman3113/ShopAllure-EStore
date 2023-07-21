@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { handleCartItem } from "../Redux/CartsSlice";
 import { toast } from "react-toastify";
 
 const Checkout = () => {
@@ -16,7 +15,6 @@ const Checkout = () => {
 	);
 
 	const navigate = useNavigate();
-	const dispatch = useDispatch();
 
 	//Razorpay Integration
 
@@ -34,7 +32,6 @@ const Checkout = () => {
 			image: "https://example.com/your_logo",
 			handler: (res) => {
 				console.log(res);
-				dispatch(handleCartItem([]));
 				navigate("/clothes");
 				toast.success("Order has been Placed.");
 			},
