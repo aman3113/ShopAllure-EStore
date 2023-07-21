@@ -58,10 +58,10 @@ const Navbar = ({ filteredArray, setFilteredArray, originalArray }) => {
 	}
 
 	function handleInput() {
-		const searchFilteredArray = filteredArray.filter(
+		const searchFilteredArray = originalArray.filter(
 			(item) =>
-				item.title.toLowerCase().includes(inputText.toLowerCase()) ||
-				item.description.toLowerCase().includes(inputText.toLowerCase())
+				item.title.toLowerCase().includes(inputText.toLowerCase().trim()) ||
+				item.description.toLowerCase().includes(inputText.toLowerCase().trim())
 		);
 		setFilteredArray(searchFilteredArray);
 	}
@@ -93,7 +93,7 @@ const Navbar = ({ filteredArray, setFilteredArray, originalArray }) => {
 				</div>
 
 				<input
-					className="p-1 px-2 border border-black text-gray-500 w-[60%] md:w-[40%] rounded-lg ml-auto mr-auto sm:mr-0"
+					className="p-1 px-2 border border-black text-gray-500 w-[60%] md:w-[40%] rounded-lg ml-auto mr-auto sm:mr-0 focus:outline-none"
 					type="search"
 					value={inputText}
 					onChange={(e) => setInputText(e.target.value)}
