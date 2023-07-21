@@ -3,8 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/react": "^2.8.0",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@reduxjs/toolkit": "^1.9.5",
     "dayjs": "^1.11.7",
+    "framer-motion": "^10.13.0",
     "jwt-decode": "^3.1.2",
     "jwt-encode": "^1.0.1",
     "miragejs": "^0.1.47",
