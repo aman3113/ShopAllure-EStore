@@ -18,10 +18,15 @@ const Clothes = () => {
 				Showing "{filteredArray.length}" items
 			</div>
 			<div className="flex   p-6">
-				<div className="flex flex-wrap gap-5 justify-center">
+				<div className="flex flex-wrap gap-5 justify-center w-full">
 					{filteredArray.map((product) => (
 						<SingleItem key={product._id} product={product} />
 					))}
+					{filteredArray.length === 0 && (
+						<p className="text-xl font-bold text-purple-700 p-8 text-center">
+							Try removing some filters
+						</p>
+					)}
 				</div>
 			</div>
 		</div>
