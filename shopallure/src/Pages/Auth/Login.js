@@ -28,7 +28,6 @@ const Login = () => {
 				},
 				"login"
 			);
-			console.log(resp);
 			const { encodedToken, foundUser } = resp;
 
 			if (checkbox) {
