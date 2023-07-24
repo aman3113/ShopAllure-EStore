@@ -32,7 +32,7 @@ const Header = () => {
 	}, []);
 
 	return (
-		<header className="flex items-center border-b px-2 shadow-md shadow-purple-300">
+		<header className="flex items-center border-b px-2 shadow-md shadow-purple-300 min-h-[10vh]">
 			<div className="md:flex gap-3 hidden ">
 				<NavLink
 					style={({ isActive }) => ({
