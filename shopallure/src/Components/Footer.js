@@ -5,7 +5,7 @@ import { BsTwitter } from "react-icons/bs";
 
 const Footer = () => {
 	return (
-		<div className="flex flex-col md:flex-row gap-2 items-center justify-center bg-black text-white p-4 absolute left-0 right-0 bottom-0">
+		<div className="flex flex-col md:flex-row gap-2 items-center justify-center bg-black text-white p-3 ">
 			<div> No Copyright © 2023 ShopAllure</div>
 			<span className="text-2xl hidden md:block"> |</span>
 

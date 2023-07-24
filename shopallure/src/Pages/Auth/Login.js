@@ -28,7 +28,7 @@ const Login = () => {
 				},
 				"login"
 			);
-
+			console.log(resp);
 			const { encodedToken, foundUser } = resp;
 
 			if (checkbox) {
@@ -69,7 +69,7 @@ const Login = () => {
 		);
 	}
 	return (
-		<div className="w-full h-[70vh] border flex flex-col gap-6 justify-center items-center p-8">
+		<div className="w-full min-h-[70vh]  flex flex-col gap-6 justify-center items-center p-8">
 			<h1 className="text-2xl md:4xl font-bold">Login to your Account</h1>
 			{error && <p className="text-red-500  md:text-xl">{error.message}</p>}
 			<form

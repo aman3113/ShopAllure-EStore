@@ -11,10 +11,10 @@ import Footer from "./Footer";
 const Layout = () => {
 	const loading = useSelector((store) => store.spinner.value);
 	return (
-		<div className="  py-5 px-1 relative md:p-5 min-h-[90vh]">
-			<div className="mb-15vh">
+		<div className="  py-5 px-1 relative md:p-5">
+			<div>
 				<Header />
-				<main>
+				<main className="py-5">
 					<Outlet />
 				</main>
 			</div>
