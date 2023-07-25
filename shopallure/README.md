@@ -46,7 +46,7 @@ $ npm start
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`REACT_APP_JWT_SECRET = "aman"`
+`REACT_APP_JWT_SECRET`
 
 ## Lessons Learned
 
