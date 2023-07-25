@@ -10,6 +10,9 @@ ShopAllure is a full-stack e-commerce web application built with React, Redux, a
 
 https://shopallure-ecommerce.vercel.app/
 
+## Demo Video
+https://www.loom.com/share/7cdffe892419488f9d37aa22fb360506?sid=2348520e-a151-41a9-a20d-747c76284da2
+
 ## Features
 
 - Product Listing: Browse a wide range of products across various categories.
